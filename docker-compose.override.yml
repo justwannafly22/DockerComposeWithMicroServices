@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  backgroundservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - rabbitmq
+    ports:
+      - "5001:80"
+  senderapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - rabbitmq
+    ports:
+      - "5002:80"

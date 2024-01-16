@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: "rabbitmq:3.13-rc-alpine"
+    container_name: "rabbitmq"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  backgroundservice:
+    image: ${DOCKER_REGISTRY-}backgroundservice
+    container_name: "backgroundservice"
+    build:
+      context: .
+      dockerfile: BackgroundService/Dockerfile
+  senderapi:
+    image: ${DOCKER_REGISTRY-}senderapi
+    container_name: "senderapi"
+    build:
+      context: .
+      dockerfile: SenderApi/Dockerfile
