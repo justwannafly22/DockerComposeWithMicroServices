@@ -10,7 +10,7 @@ public class ExceptionHandler
 
     public ExceptionHandler(RequestDelegate next, ILogger<ExceptionHandler> logger)
     {
-        _next = next;
+        _next = next; 
         _logger = logger;
     }
 
